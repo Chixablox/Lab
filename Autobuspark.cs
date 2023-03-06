@@ -434,6 +434,7 @@ namespace ConsoleApplication5
                         DateTime date = Convert.ToDateTime(Console.ReadLine());
                         staz = date.Subtract(managers[i].workfrom);
                         dt = dt + staz;
+                        dt = dt.AddYears(-1);
                         Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
                         for (var j = 0; j < managers[i].pastexp.Count; j++)
                         {
@@ -454,6 +455,7 @@ namespace ConsoleApplication5
                         DateTime date = Convert.ToDateTime(Console.ReadLine());
                         staz = date.Subtract(mechanics[i].workfrom);
                         dt = dt + staz;
+                        dt = dt.AddYears(-1);
                         Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
                         for (var j = 0; j < mechanics[i].pastexp.Count; j++)
                         {

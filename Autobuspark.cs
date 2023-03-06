@@ -403,8 +403,10 @@ namespace ConsoleApplication5
             Console.WriteLine("Введите ФИО работника, стаж которого хотите найти");
             string name = Convert.ToString(Console.ReadLine());
             int l = 0;
+            int m = 0;
             DateTime dt = new DateTime();
             TimeSpan staz = new TimeSpan();
+            DateTime dt2 = new DateTime(0002, 01, 01, 0,0,0 );
             for (var i=0; i<drivers.Count; i++)
             {
                 if (drivers[i].name == name)
@@ -414,8 +416,15 @@ namespace ConsoleApplication5
                     DateTime date = Convert.ToDateTime(Console.ReadLine());
                     staz = date.Subtract(drivers[i].workfrom);
                     dt = dt + staz;
-                    dt = dt.AddYears(-1);
-                    Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                    if (dt < dt2)
+                    {
+                        Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                    }
+                    else
+                    {
+                        dt = dt.AddYears(-1);
+                        Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                    }
                     for(var j=0; j<drivers[i].pastexp.Count; j++)
                     {
                         staz = staz + drivers[i].pastexp[j].dismissedfrom.Subtract(drivers[i].pastexp[j].workfrom);
@@ -434,8 +443,15 @@ namespace ConsoleApplication5
                         DateTime date = Convert.ToDateTime(Console.ReadLine());
                         staz = date.Subtract(managers[i].workfrom);
                         dt = dt + staz;
-                        dt = dt.AddYears(-1);
-                        Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        if (dt < dt2)
+                        {
+                            Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        }
+                        else
+                        {
+                            dt = dt.AddYears(-1);
+                            Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        }
                         for (var j = 0; j < managers[i].pastexp.Count; j++)
                         {
                             staz = staz + managers[i].pastexp[j].dismissedfrom.Subtract(managers[i].pastexp[j].workfrom);
@@ -455,8 +471,15 @@ namespace ConsoleApplication5
                         DateTime date = Convert.ToDateTime(Console.ReadLine());
                         staz = date.Subtract(mechanics[i].workfrom);
                         dt = dt + staz;
-                        dt = dt.AddYears(-1);
-                        Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        if (dt < dt2)
+                        {
+                            Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        }
+                        else
+                        {
+                            dt = dt.AddYears(-1);
+                            Console.WriteLine("Стаж работы в Вашей фирме: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+                        }
                         for (var j = 0; j < mechanics[i].pastexp.Count; j++)
                         {
                             staz = staz + mechanics[i].pastexp[j].dismissedfrom.Subtract(mechanics[i].pastexp[j].workfrom);
@@ -466,8 +489,16 @@ namespace ConsoleApplication5
                 }
             }
             DateTime dt1 = new DateTime();
-            dt = dt + staz;
-            Console.WriteLine("Общий стаж: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
+            dt1 = dt1 + staz;
+            if (dt1 < dt2)
+            {
+                Console.WriteLine("Общий стаж: " + dt1.ToString("%M") + " месяца " + dt1.ToString("%d") + " дней");
+            }
+            else
+            {
+                dt1=dt1.AddYears(-1);
+                Console.WriteLine("Общий стаж: " + dt1.ToString("%y") + " лет " + dt1.ToString("%M") + " месяца " + dt1.ToString("%d") + " дней");
+            }
             Console.ReadLine();
         }
         static void Main(string[] args)

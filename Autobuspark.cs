@@ -464,7 +464,7 @@ namespace ConsoleApplication5
                 }
             }
             DateTime dt1 = new DateTime();
-            dt1 = dt + staz;
+            dt = dt + staz;
             Console.WriteLine("Общий стаж: " + dt.ToString("%y") + " лет " + dt.ToString("%M") + " месяца " + dt.ToString("%d") + " дней");
             Console.ReadLine();
         }

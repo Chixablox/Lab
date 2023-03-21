@@ -22,18 +22,34 @@ namespace ConsoleApplication8
                 {
                     strokan.Push(s[i]);
                 }
-                   
+                if ((s[i] == '}') || (s[i] == ']') || (s[i] == ')'))
+                {
+                    strokak.Push(s[i]);
+                }
             }
-            int k = 0;
+            int k = 0;    
+            if (strokan.Count == 0)
+            {
+                k = -1;
+            }
+            else
+            {
+                k = strokan.Count;
+            }
             Console.WriteLine();
             while (strokan.Count > 0)
             {
                 char cn = strokan.Peek();
-                Console.WriteLine(cn);
                 if (cn == '[')
                 {
                     int i = s.LastIndexOf(']');
                     int j = s.IndexOf('[');
+                    if (i == -1) 
+                    {
+                        s = s.Remove(j, 1);
+                        cn = strokan.Pop();
+                    }
+
                     if (j < i)
                     {
                         otvet += 1;
@@ -56,6 +72,11 @@ namespace ConsoleApplication8
                 {
                     int i = s.LastIndexOf('}');
                     int j = s.IndexOf('{');
+                    if (i == -1)
+                    {
+                        s = s.Remove(j, 1);
+                        cn = strokan.Pop();
+                    }
                     if (j < i)
                     {
                         otvet += 1;
@@ -78,6 +99,11 @@ namespace ConsoleApplication8
                 {
                     int i = s.LastIndexOf(')');
                     int j = s.IndexOf('(');
+                    if (i == -1)
+                    {
+                        s = s.Remove(j, 1);
+                        cn = strokan.Pop();
+                    }
                     if (j < i)
                     {
                         otvet += 1;
@@ -98,8 +124,14 @@ namespace ConsoleApplication8
                 }
 
             }
-            Console.WriteLine(otvet);
-            Console.WriteLine(s);
+            if ((k == otvet) && (k==strokak.Count))
+            {
+                Console.WriteLine("da");
+            }
+            else
+            {
+                Console.WriteLine("net");
+            }
             Console.ReadLine();
             
         }

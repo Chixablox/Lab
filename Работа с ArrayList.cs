@@ -174,7 +174,7 @@ namespace ConsoleApplication10
         {
             Console.WriteLine("Введите индекс, с которого надо удалять");
             int index = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите количесвто элементов на удвление");
+            Console.WriteLine("Введите количесвто элементов на удаление");
             int count = Convert.ToInt32(Console.ReadLine());
             arr.RemoveRange(index, count);
 

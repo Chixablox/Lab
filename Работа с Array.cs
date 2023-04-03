@@ -120,6 +120,17 @@ namespace ConsoleApplication10
             Console.WriteLine("Массив после: ");
             Vivod(ref arr);
         }
+        public static void Copy(ref Array arr, ref Array arr2)
+        {
+            Console.WriteLine("Копирование");
+            Console.WriteLine("Массив arr2 до копирования в него элеменнтов arr1(пустой)");
+            Vivod(ref arr2);
+            Console.WriteLine("\nВведите число копируемых элементов(от 1 до 5)");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Array.Copy(arr, arr2, n);
+            Console.WriteLine("\nМассив arr2 после операции");
+            Vivod(ref arr2);
+        }
         static void Main(string[] args)
         {
             Array arr = Array.CreateInstance(typeof(String), 5);
@@ -127,7 +138,7 @@ namespace ConsoleApplication10
             for (; ; )
             {
                 Console.Clear();
-                Console.WriteLine("1-Ввод\n2-Вывод\n3-Sort\n4-Reverse\n5-BinarySearch\n6-GetValue\n7-IndexOf\n8-Rank\nEsc-Выход");
+                Console.WriteLine("1-Ввод\n2-Вывод\n3-Sort\n4-Reverse\n5-BinarySearch\n6-GetValue\n7-IndexOf\n8-Rank\n9-Copy\nEsc-Выход");
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
@@ -161,6 +172,10 @@ namespace ConsoleApplication10
                     case ConsoleKey.D8:
                         Console.Clear();
                         Rank(ref arr);
+                        break;
+                    case ConsoleKey.D9:
+                        Console.Clear();
+                        Copy(ref arr, ref arr2);
                         break;
                     case ConsoleKey.Escape:
                         Environment.Exit(0);

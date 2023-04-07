@@ -43,6 +43,7 @@ namespace Работа_с_Dictionary
             Console.WriteLine("Метод Clear");
             Console.WriteLine("Словарь до\n");
             Vivod(ref dt);
+            dt.Clear();
             Console.WriteLine("Словарь после\n");
             Vivod(ref dt);
         }

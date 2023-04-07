@@ -45,6 +45,7 @@ namespace Работа_с_HashTable
             Console.WriteLine("Метод Clear");
             Console.WriteLine("Таблица до\n");
             Vivod(ref ht);
+            ht.Clear();
             Console.WriteLine("Таблица после\n");
             Vivod(ref ht);
         }

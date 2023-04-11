@@ -40,10 +40,25 @@ namespace ConsoleApplication13
     public delegate double Op(double a, double b);
     class Program
     {
+        public static void Doubleli(ref double a)
+        {
+            int n= 0;
+            while (n < 1)
+            {
+                if (Double.TryParse(Console.ReadLine(), out a))
+                {
+                    n++;
+                }
+                else
+                {
+                    Console.WriteLine("Вы ввели не число, введите число");
+                }
+            }
+        }
         public static void Main(string[] args)
         {
             Math math = new Math();
-            List < Op > del = new List<Op>() { math.Plus, math.Minus, math.Um, math.Del };
+            List<Op> del = new List<Op>() { math.Plus, math.Minus, math.Um, math.Del };
             double res = 0;
             double a = 0;
             double b = 0;
@@ -56,9 +71,9 @@ namespace ConsoleApplication13
                         Console.Clear();
                         Console.WriteLine("Сложение");
                         Console.WriteLine("Введите первое слагаемое");
-                        a = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref a);
                         Console.WriteLine("Введите второе слагаемое");
-                        b = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref b);
                         res = del[0](a, b);
                         Console.WriteLine("Сумма: " + res);
                         Console.WriteLine("\nНажмите любую клавишу....");
@@ -68,9 +83,9 @@ namespace ConsoleApplication13
                         Console.Clear();
                         Console.WriteLine("Вычитание");
                         Console.WriteLine("Введите уменьшаеомое");
-                        a = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref a);
                         Console.WriteLine("Введите вычитаемое");
-                        b = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref b);
                         res = del[1](a, b);
                         Console.WriteLine("Разность: " + res);
                         Console.WriteLine("\nНажмите любую клавишу....");
@@ -80,9 +95,9 @@ namespace ConsoleApplication13
                         Console.Clear();
                         Console.WriteLine("Умножение");
                         Console.WriteLine("Введите первый множитель");
-                        a = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref a);
                         Console.WriteLine("Введите второй множитель");
-                        b = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref b);
                         res = del[2](a, b);
                         Console.WriteLine("Произведение: " + res);
                         Console.WriteLine("\nНажмите любую клавишу....");
@@ -92,11 +107,18 @@ namespace ConsoleApplication13
                         Console.Clear();
                         Console.WriteLine("Деление");
                         Console.WriteLine("Введите делимое");
-                        a = Convert.ToInt32(Console.ReadLine());
+                        Doubleli(ref a);
                         Console.WriteLine("Введите делитель");
-                        b = Convert.ToInt32(Console.ReadLine());
-                        res = del[3](a, b);
-                        Console.WriteLine("Частное: " + res);
+                        Doubleli(ref b);
+                        if (b != 0)
+                        {
+                            res = del[3](a, b);
+                            Console.WriteLine("Частное: " + res);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Делить на ноль нельзя");
+                        }
                         Console.WriteLine("\nНажмите любую клавишу....");
                         Console.ReadLine();
                         break;

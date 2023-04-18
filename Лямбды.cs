@@ -14,20 +14,36 @@ namespace Delegate
     }
     class Program
     {
+        public static void Proverka(ref double a)
+        {
+            int n=1;
+            while (n >0 )
+            {
+                if (Double.TryParse(Console.ReadLine(), out a))
+                {
+                    n--;  
+                }
+                else
+                {
+                    Console.WriteLine("Неверный ввод данных, попробуйте ещё раз");
+                }
+            }
+        }
         static void Main(string[] args)
         {
+            double a=0, b=0, c = 0;
             Lyambda lya = new Lyambda();
             Console.WriteLine("Введите первое число");
-            double a = Convert.ToInt32(Console.ReadLine());
+            Proverka(ref a);
             Console.WriteLine("Введите второе число");
-            double b = Convert.ToInt32(Console.ReadLine());
+            Proverka(ref b);
             Console.WriteLine("Введите третье число");
-            double c = Convert.ToInt32(Console.ReadLine());
+            Proverka(ref c);
             List<Op> operation = new List<Op>() { lya.sum, lya.mult, lya.min, lya.max, lya.sr };
             for (; ; )
             {
                 Console.Clear();
-                Console.WriteLine("1-Сумма\n2-Произведение\n3-Минимальный\n4-Максимальный\n5-Среднее арифмитическое\nEsc-Выход");
+                Console.WriteLine("1-Сумма\n2-Произведение\n3-Минимальный\n4-Максимальный\n5-Среднее арифмитическое\n6-Просмотр введённых чисел\nEsc-Выход");
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
@@ -55,6 +71,11 @@ namespace Delegate
                         Console.WriteLine("Среднее арифмитическое: " + operation[4](a, b, c));
                         Console.ReadLine();
                         break;
+                    case ConsoleKey.D6:
+                        Console.Clear();
+                        Console.WriteLine("Числа: " + a + " " + b+ " " + c);
+                        Console.ReadLine();
+                        break;
                     case ConsoleKey.Escape:
                         Environment.Exit(0);
                         break;
@@ -62,3 +83,4 @@ namespace Delegate
             }
         }
     }
+}

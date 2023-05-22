@@ -35,9 +35,9 @@ namespace ConsoleApplication19
 
             Console.WriteLine("Число чётных: " + chet.Count());
 
-            int max = test.Max();
-            int min = test.Min();
-
+            var min = (from num in test select num).Min();
+            var max = (from num in test select num).Max();
+            
             Console.WriteLine("Минимум: " + min + "\nМаксимум: " + max);
         }
 

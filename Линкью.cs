@@ -35,9 +35,16 @@ namespace ConsoleApplication19
 
             Console.WriteLine("Число чётных: " + chet.Count());
 
-            var min = (from num in test select num).Min();
-            var max = (from num in test select num).Max();
-            
+            var sortMax = from num in test
+                       orderby num ascending
+                       select num;
+            var max = sortMax.Last();
+
+            var sortMin = from num in test
+                          orderby num descending
+                          select num;
+            var min = sortMin.Last();
+
             Console.WriteLine("Минимум: " + min + "\nМаксимум: " + max);
         }
 
@@ -70,7 +77,7 @@ namespace ConsoleApplication19
             Linq(test);
 
             Console.ReadLine();
- 
+
         }
     }
 }
